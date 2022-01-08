@@ -10,6 +10,11 @@ trait ApiResponser
     private function successResponse($data,$code){
         return response()->json($data,$code);
     }
+    //function to return error in Json format
+    protected function errorResponse($message,$code)
+    {
+        return response()->json(['error'=>$message,'code'=>$code],$code);
+    }
     //function to return a collection of data
     protected function showAll(Collection $collection,$code = 200){
         if ( $collection->isEmpty()){
