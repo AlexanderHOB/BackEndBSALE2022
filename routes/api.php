@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\Category\CategoryProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,4 @@ Route::resource('products',ProductController::class,['only'=>['index','show']]);
 * Category
 */
 Route::resource('categories',CategoryController::class,['only'=>['index','show']]);
+Route::resource('categories.products',CategoryProductController::class,['only'=>['index']]);

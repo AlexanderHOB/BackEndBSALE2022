@@ -52,6 +52,10 @@ class Handler extends ExceptionHandler
             return $this->handleException($e);
         });
     }
+    public function dataResponse($data): JsonResponse
+    {
+    return response()->json(['content' => $data], Response::HTTP_OK);
+    }
     public function handleException( Throwable $e){
         if ($e instanceof HttpException) {
             $code = $e->getStatusCode();
