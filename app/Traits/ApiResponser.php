@@ -34,7 +34,7 @@ trait ApiResponser
         foreach(request()->query as $query =>$value){
             if(isset($query,$value) && !in_array($query, ['sort_by','sort','per_page','page'])){
                 $collection = $collection->filter(function ($query) use ($value) {
-                    return strpos($query->name, $value) !== false;
+                    return strpos(strtoupper($query->name), strtoupper($value)) !== false;
                 });
             }
         }
