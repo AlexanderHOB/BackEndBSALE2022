@@ -20,7 +20,7 @@ use App\Http\Controllers\Category\CategoryProductController;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-
+Route::group(['middleware' => ['cors']], function () {
 /*
 * Products
 */
@@ -32,3 +32,6 @@ Route::resource('products',ProductController::class,['only'=>['index','show']]);
 */
 Route::resource('categories',CategoryController::class,['only'=>['index','show']]);
 Route::resource('categories.products',CategoryProductController::class,['only'=>['index']]);
+
+});
+
