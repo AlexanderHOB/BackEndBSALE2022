@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Asm89\Stack\CorsService;
 use App\Traits\ApiResponser;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Validation\ValidationException;
@@ -52,15 +53,15 @@ class Handler extends ExceptionHandler
             return $this->handleException($e);
         });
     }
-    public function dataResponse($data): JsonResponse
+    public function dataResponse($data)
     {
         return response()->json(['content' => $data], Response::HTTP_OK);
     }
-    public function successResponse(string $message, $code = Response::HTTP_OK): JsonResponse
+    public function successResponse(string $message, $code = Response::HTTP_OK)
     {
         return response()->json(['success' => $message, 'code' => $code], $code);
     }
-    public function errorResponse($message, $code = Response::HTTP_BAD_REQUEST): JsonResponse
+    public function errorResponse($message, $code = Response::HTTP_BAD_REQUEST)
     {
         return response()->json(['error' => $message, 'code' => $code], $code);
     }

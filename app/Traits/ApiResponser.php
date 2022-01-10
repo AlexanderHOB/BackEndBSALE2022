@@ -63,6 +63,7 @@ trait ApiResponser
             'per_page' => 'integer|min:2|max:50'
         ];
         Validator::Validate(request()->all(),$rules);
+        // dd($collection);
         //resolve current page
         $page = LengthAwarePaginator::resolveCurrentPage();
         $perPage=15; //quantity  elements default
